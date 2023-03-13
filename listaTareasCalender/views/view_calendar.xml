@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="calendar_calender_view" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_assign">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id='action_calendar_calender' model='ir.actions.act_window'>
+        <field name="name">Data asignada</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">calendar</field>
+        <field name="context">{'calendar_view_ref': 'my_project.calendar_calender_view'}</field>
+    </record>
+
+    <menuitem id="menu_custom_top_level" name="Mis tareas (Calendario)" web_icon="my_project,static/description/icon.png"/>
+    <menuitem id="menu_calendar_calender" parent="menu_custom_top_level" action="action_calendar_calender" sequence="10" />
+</odoo>
